@@ -1,0 +1,6 @@
+ubuntu@vcn-vexa-vnic:~/vexa$ docker exec vexa-lite sh -c 'tr "\0" " " < /proc/33/cmdline; echo'
+/opt/venvs/admin/bin/python -m admin_api
+ubuntu@vcn-vexa-vnic:~/vexa$ docker exec vexa-lite sh -c 'grep -R "port" /proc/33/environ 2>/dev/null | head'
+ubuntu@vcn-vexa-vnic:~/vexa$ docker exec vexa-lite sh -c 'curl -sS -m 5 -i http://127.0.0.1:8000/health 2>&1 || true'
+curl: (7) Failed to connect to 127.0.0.1 port 8000 after 0 ms: Couldn't connect to server
+ubuntu@vcn-vexa-vnic:~/vexa$
