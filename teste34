@@ -1,0 +1,11 @@
+ubuntu@vcn-vexa-vnic:~/vexa$ docker exec vexa-lite sh -c 'ps aux | grep -Ei "admin|api|gateway|supervis|python" | grep -v grep'
+root           1  0.0  0.2  35944  2916 ?        Ss   04:50   0:02 /usr/bin/python3 /usr/bin/supervisord -n -c /etc/supervisor/conf.d/vexa.conf
+root          26  0.0  0.1  59000  1704 ?        S    04:50   0:02 /usr/bin/python3 /usr/bin/websockify --web /usr/share/novnc 6080 localhost:5900
+root          33  0.7  0.3 386412  3460 ?        Sl   04:50   0:29 /opt/venvs/admin/bin/python -m admin_api
+root          34  0.5  0.4 324576  4336 ?        Sl   04:50   0:21 /opt/venvs/runtime/bin/python -m runtime_kernel
+root          35  0.5  0.5 769032  5068 ?        Sl   04:50   0:21 /opt/venvs/agent/bin/python3 /opt/venvs/agent/bin/uvicorn control_plane.api:app --host 0.0.0.0 --port 8100 --log-level info
+root          36  1.5  2.2 495016 22176 ?        Dl   04:50   0:58 /opt/venvs/meeting/bin/python -m meeting_api
+root          37  0.6  1.2 384052 12060 ?        Sl   04:50   0:23 /opt/venvs/gateway/bin/python -m gateway
+ubuntu@vcn-vexa-vnic:~/vexa$ docker exec vexa-lite sh -c 'ss -lntp'
+sh: 1: ss: not found
+ubuntu@vcn-vexa-vnic:~/vexa$
